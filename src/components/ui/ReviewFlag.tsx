@@ -7,6 +7,7 @@ const labels: Record<Review["source"], string> = {
   brief: "Needs approval · from brief",
   "draft-copy": "Draft copy · needs approval",
   placeholder: "Placeholder · client input needed",
+  client: "Supplied by client",
 };
 
 interface ReviewFlagProps {

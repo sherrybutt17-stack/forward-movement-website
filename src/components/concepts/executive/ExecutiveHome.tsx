@@ -92,6 +92,7 @@ export function ExecutiveHome() {
   const uei = identifiers.find((id) => id.label === "UEI");
   const primaryNaics = naicsCodes.find((code) => code.primary);
   const featuredClients = sectors.flatMap((sector) => sector.clients.filter((client) => client.featured).map((client) => client.name));
+  const founderPhoto = leader.altPhoto ?? leader.photo;
 
   return (
     <div className={cn(plex.variable, plexMono.variable, "exec-root concept-smooth ff-executive flex flex-1 flex-col bg-white text-charcoal transition-colors duration-500")}>
@@ -352,8 +353,15 @@ export function ExecutiveHome() {
             <div className={cn(wrap, "grid gap-12 lg:grid-cols-12 lg:items-center")}>
               <div className="lg:col-span-5">
                 <div className="border-gradient relative grid aspect-[4/5] place-items-center overflow-hidden rounded-3xl shadow-lift [--card-bg:var(--color-mist)]">
-                  {leader.photo ? (
-                    <Image src={leader.photo.src} alt={leader.photo.alt} fill sizes="(min-width: 1024px) 30rem, 90vw" placeholder="blur" className="chevron-reveal object-cover" />
+                  {founderPhoto ? (
+                    <Image
+                      src={founderPhoto.src}
+                      alt={founderPhoto.alt}
+                      fill
+                      sizes="(min-width: 1024px) 30rem, 90vw"
+                      placeholder="blur"
+                      className="chevron-reveal object-cover object-[50%_18%]"
+                    />
                   ) : (
                     <>
                       <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(80%_60%_at_30%_20%,#dce5ee,transparent_70%),radial-gradient(60%_50%_at_90%_100%,#fbf3c8,transparent_70%)]" />
@@ -374,15 +382,13 @@ export function ExecutiveHome() {
                 </h2>
                 <p className="mt-2 text-lg font-medium text-navy-700">{leader.role}</p>
                 <p className="mt-6 max-w-2xl text-xl leading-relaxed text-slate">{leader.summary}</p>
-                {isVisible(leader.affiliationsReview) ? (
-                  <ul className="ff-mono mt-8 flex flex-wrap gap-2 text-xs uppercase tracking-[0.16em]">
-                    {["NAWBO member", "WPEO member", `${leader.boards.length} board roles`].map((chip) => (
-                      <li key={chip} className="rounded-full border border-hairline bg-white px-3 py-2 text-navy-900 shadow-card">
-                        {chip}
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
+                <ul className="ff-mono mt-8 flex flex-wrap gap-2 text-xs uppercase tracking-[0.16em]">
+                  {leader.highlights.map((chip) => (
+                    <li key={chip} className="rounded-full border border-hairline bg-white px-3 py-2 text-navy-900 shadow-card">
+                      {chip}
+                    </li>
+                  ))}
+                </ul>
                 <ReviewFlag review={leader.review} className="mt-4" />
                 {isVisible(featuredTestimonial.review) ? (
                   <figure className="mt-10 border-l-2 border-gold-400 pl-6">

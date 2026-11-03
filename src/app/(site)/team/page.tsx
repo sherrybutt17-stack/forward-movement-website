@@ -13,7 +13,7 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 
 export const metadata: Metadata = {
   title: "Meet the Team",
-  description: `Meet the people behind ${siteConfig.brandName}, led by founder and CEO Theresa R. Proctor.`,
+  description: `Meet the people behind ${siteConfig.brandName}, led by founder and CEO ${leader.name}.`,
   alternates: { canonical: "/team" },
 };
 
@@ -26,7 +26,7 @@ export default function TeamPage() {
       <PageHero
         eyebrow="Meet the team"
         title={`The people behind ${siteConfig.shortName}`}
-        lead="Our work is led by founder and CEO Theresa R. Proctor, together with an instructional design team that builds each curriculum around the organization it serves."
+        lead={`Our work is led by founder and CEO ${leader.name}, an ICF-credentialed Executive Coach, together with an instructional design team that builds each curriculum around the organization it serves.`}
       />
 
       {isVisible(leader.review) ? (
@@ -56,6 +56,29 @@ export default function TeamPage() {
                 {leader.bio.map((paragraph) => (
                   <p key={paragraph.slice(0, 32)}>{paragraph}</p>
                 ))}
+              </div>
+
+              <div className="mt-10 border-t border-line pt-8">
+                <h3 className="font-sans text-sm font-semibold uppercase tracking-[0.12em] text-navy-700">
+                  Credentials &amp; certifications
+                </h3>
+                <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
+                  {leader.credentials.map((credential) => (
+                    <li key={credential} className="flex gap-3 text-charcoal">
+                      <span aria-hidden="true" className="mt-2.5 h-0.5 w-4 shrink-0 bg-gold-400" />
+                      {credential}
+                    </li>
+                  ))}
+                </ul>
+                {leader.honors.length > 0 ? (
+                  <ul className="mt-6 flex flex-wrap gap-2">
+                    {leader.honors.map((honor) => (
+                      <li key={honor} className="rounded-full bg-gold-100 px-4 py-2 text-sm font-semibold text-ink">
+                        {honor}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </div>
 
               {isVisible(leader.affiliationsReview) ? (

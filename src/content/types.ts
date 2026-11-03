@@ -6,7 +6,7 @@
  */
 export type ContentStatus = "approved" | "needs-approval" | "placeholder";
 
-export type ContentSource = "current-site" | "brief" | "draft-copy" | "placeholder";
+export type ContentSource = "current-site" | "brief" | "draft-copy" | "placeholder" | "client";
 
 export interface Review {
   status: ContentStatus;
@@ -34,6 +34,13 @@ export const fromBrief = (note?: string): Review => ({
 export const draftCopy = (note?: string): Review => ({
   status: "needs-approval",
   source: "draft-copy",
+  note,
+});
+
+/** Content the client supplied directly for use on the site (e.g., the 2026 bio and headshots). */
+export const fromClient = (note?: string): Review => ({
+  status: "approved",
+  source: "client",
   note,
 });
 

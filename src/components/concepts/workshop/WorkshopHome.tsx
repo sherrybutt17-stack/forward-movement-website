@@ -462,7 +462,7 @@ export function WorkshopHome() {
                   <span aria-hidden="true" className="tape left-1/2 -top-3 -translate-x-1/2 -rotate-3" />
                   {leader.photo ? (
                     <div className="chevron-reveal relative aspect-[4/5] overflow-hidden">
-                      <Image src={leader.photo.src} alt={leader.photo.alt} fill sizes="(min-width: 768px) 24rem, 90vw" placeholder="blur" className="object-cover" />
+                      <Image src={leader.photo.src} alt={leader.photo.alt} fill sizes="(min-width: 768px) 24rem, 90vw" placeholder="blur" className="object-cover object-[50%_18%]" />
                     </div>
                   ) : (
                     <div className="grid aspect-[4/5] place-items-center bg-[repeating-linear-gradient(45deg,#ebe6dc_0,#ebe6dc_10px,#e0d9cc_10px,#e0d9cc_20px)]">
@@ -483,9 +483,9 @@ export function WorkshopHome() {
                 </h2>
                 <p className="mt-2 text-lg font-semibold text-terracotta-700">{leader.role}</p>
                 <p className="mt-6 max-w-xl text-xl leading-relaxed text-slate">{leader.summary}</p>
-                {isVisible(leader.affiliationsReview) ? (
+                {leader.highlights.length > 0 ? (
                   <ul className="mt-6 flex flex-wrap gap-2">
-                    {["NAWBO member", "WPEO member", `${leader.boards.length} board roles`].map((chip, i) => (
+                    {leader.highlights.map((chip, i) => (
                       <li key={chip} className={cn("px-3 py-1.5 text-sm font-semibold text-navy-900", noteColors[i % noteColors.length], tilts[i % tilts.length])}>
                         {chip}
                       </li>

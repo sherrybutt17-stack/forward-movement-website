@@ -87,7 +87,7 @@
 
 ## Final concept selection (2026-11-03)
 - The user selected **Executive** (`/concepts/1`) and **Workshop** (`/concepts/2`, dark theme). Kinetic was removed, along with its now-unused shared parts (CursorRing, ProximityText, VelocityMarquee, ScrollWords, Ticker).
-- **CEO headshot:** the user asked for Theresa's headshot. None was supplied, and the current-site photo could not be fetched (the Wix CDN resets requests).
+- **CEO headshot and bio:** client-supplied 2026 photos (`src/assets/team/theresa-proctor-1.jpg`, `-2.jpg`) and bio are in `src/content/team.ts`, marked approved (source "client").
   - Both concepts and the site pages show the real photo automatically once `leader.photo` is set in `src/content/team.ts` (see `src/assets/team/README.md`).
   - Never substitute a generated or stock portrait.
 - **GitHub:** the target is `git@github.com:sherrybutt17-stack/<repo>.git`. SSH auth works; `gh` is not installed. The user must create the empty, private repo before the push.

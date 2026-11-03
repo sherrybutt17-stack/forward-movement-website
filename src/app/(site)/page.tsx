@@ -198,18 +198,14 @@ export default function HomePage() {
               <SectionHeader id="founder" eyebrow="Meet our founder" title={leader.name} />
               <p className="mt-2 font-semibold text-navy-700">{leader.role}</p>
               <p className="mt-6 max-w-xl text-lead text-charcoal">{leader.summary}</p>
-              {isVisible(leader.affiliationsReview) ? (
-                <ul className="mt-6 grid max-w-xl gap-2 text-slate">
-                  <li className="flex gap-3">
+              <ul className="mt-6 grid max-w-xl gap-2 text-slate">
+                {leader.highlights.map((item) => (
+                  <li key={item} className="flex gap-3">
                     <span aria-hidden="true" className="mt-2.5 h-0.5 w-4 shrink-0 bg-gold-400" />
-                    Board service with {leader.boards.length} Prince George’s County organizations
+                    {item}
                   </li>
-                  <li className="flex gap-3">
-                    <span aria-hidden="true" className="mt-2.5 h-0.5 w-4 shrink-0 bg-gold-400" />
-                    Member of NAWBO and WPEO
-                  </li>
-                </ul>
-              ) : null}
+                ))}
+              </ul>
               <ReviewFlag review={leader.review} className="mt-5" />
               <div className="mt-8">
                 <ButtonLink href="/team" variant="secondary" arrow>
