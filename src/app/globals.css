@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+/* Third-party design references are study material only. */
+@source not "../../references";
+@source not "../../assets-intake";
+
+/*
+ * Design tokens. The default Tailwind palette is cleared so only these colours exist.
+ * Brand navy (#1E2D3B) and gold (#EDCD1F) come from the current site's theme.
+ * Gold is an accent for fills, rules and focus on dark surfaces — never body text on light.
+ */
+@theme {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --color-ink: #0f1a24;
+  --color-navy-950: #16222e;
+  --color-navy-900: #1e2d3b;
+  --color-navy-800: #2a3d50;
+  --color-navy-700: #3d5975;
+  --color-navy-200: #c3d1df;
+  --color-navy-100: #dce5ee;
+  --color-gold-400: #edcd1f;
+  --color-gold-300: #f3e389;
+  --color-gold-100: #fbf3c8;
+  --color-ivory-50: #fcfaf5;
+  --color-ivory-100: #f5f0e4;
+  --color-ivory-200: #ede6d6;
+  --color-charcoal: #1f2328;
+  --color-slate: #4a5561;
+  --color-line: #e3dccb;
+  --color-paper: #f8f3e9;
+  --color-coral: #f2674a;
+  --color-coral-100: #fde3dc;
+  --color-cream: #fff8ec;
+  --color-mist: #f4f6f9;
+  --color-hairline: #e2e7ee;
+  --color-terracotta: #c2502e;
+  --color-terracotta-700: #9e3d1f;
+  --color-sky-100: #dbe9f4;
+  --color-sage-100: #e3ecd9;
+  --color-rose-100: #f7e3d8;
+  --color-success: #1f6f43;
+  --color-error: #b42318;
+
+
+  --text-display: clamp(2.5rem, 1.55rem + 4.2vw, 4.75rem);
+  --text-display--line-height: 1.04;
+  --text-h1: clamp(2.25rem, 1.6rem + 2.8vw, 3.75rem);
+  --text-h1--line-height: 1.08;
+  --text-h2: clamp(1.875rem, 1.45rem + 1.7vw, 2.75rem);
+  --text-h2--line-height: 1.12;
+  --text-h3: clamp(1.3rem, 1.18rem + 0.5vw, 1.6rem);
+  --text-h3--line-height: 1.25;
+  --text-lead: clamp(1.125rem, 1.06rem + 0.3vw, 1.3rem);
+  --text-lead--line-height: 1.6;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.65;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+
+  --shadow-card: 0 1px 2px rgb(15 26 36 / 0.06), 0 8px 24px -12px rgb(15 26 36 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(15 26 36 / 0.06), 0 18px 36px -16px rgb(15 26 36 / 0.28);
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Inline so var() resolves on the element using it (font variables are scoped to layout wrappers). */
+@theme inline {
+  --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-newsreader), ui-serif, Georgia, "Times New Roman", serif;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--color-ivory-50);
+    color: var(--color-charcoal);
+    font-family: var(--font-public-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-newsreader), ui-serif, Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    color: var(--color-navy-900);
+    letter-spacing: -0.012em;
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  dd {
+    text-wrap: pretty;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-navy-700);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .on-dark :focus-visible {
+    outline-color: var(--color-gold-400);
+  }
+
+  ::selection {
+    background: var(--color-gold-300);
+    color: var(--color-ink);
+  }
+
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-navy-700);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 2rem;
+    height: 2px;
+    background: var(--color-gold-400);
+  }
+
+  .on-dark .eyebrow {
+    color: var(--color-gold-300);
+  }
+
+  .text-link {
+    font-weight: 600;
+    color: var(--color-navy-900);
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-gold-400);
+    text-decoration-thickness: 2px;
+    transition: text-decoration-color 150ms var(--ease-out-quint);
+  }
+
+  .text-link:hover {
+    text-decoration-color: var(--color-navy-900);
+  }
+
+  .on-dark .text-link {
+    color: var(--color-ivory-50);
+  }
+
+  .on-dark .text-link:hover {
+    text-decoration-color: var(--color-ivory-50);
+  }
+
+  .prose-measure {
+    max-width: 65ch;
+  }
+
+  /* FAQ disclosure: native <details>, animated only where the browser supports it. */
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item .faq-icon {
+    transition: transform 250ms var(--ease-out-quint);
+  }
+
+  .faq-item[open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  @supports (interpolate-size: allow-keywords) {
+    .faq-item {
+      interpolate-size: allow-keywords;
+    }
+
+    .faq-item::details-content {
+      block-size: 0;
+      overflow: clip;
+      transition:
+        block-size 250ms var(--ease-out-quint),
+        content-visibility 250ms allow-discrete;
+    }
+
+    .faq-item[open]::details-content {
+      block-size: auto;
+    }
+  }
+}
+
+/* Review notes (approval flags) are hidden until the reviewer switches them on. */
+html:not([data-review-notes="on"]) [data-review-note] {
+  display: none !important;
+}
+
+/*
+ * Motion safety net: reveal animations start hidden via inline styles.
+ * If the user prefers reduced motion, force everything visible and still.
+ * (A <noscript> rule in the root layout does the same when JavaScript is off.)
+ */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

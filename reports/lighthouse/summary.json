@@ -1,0 +1,78 @@
+[
+  {
+    "page": "/concepts/3",
+    "preset": "mobile",
+    "run": 1,
+    "report": "concepts-3-mobile-run1.report.html",
+    "lighthouseVersion": "13.6.0",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "benchmarkIndex": 2753,
+    "throttlingMethod": "simulate",
+    "throttling": {
+      "rttMs": 150,
+      "throughputKbps": 1638.4,
+      "requestLatencyMs": 562.5,
+      "downloadThroughputKbps": 1474.5600000000002,
+      "uploadThroughputKbps": 675,
+      "cpuSlowdownMultiplier": 4
+    },
+    "formFactor": "mobile",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 66
+    },
+    "metrics": {
+      "fcp": 1213.1719,
+      "lcp": 1213.1719,
+      "tbt": 21,
+      "cls": 0.000128786356738455,
+      "si": 1213.1719
+    },
+    "lcpElement": "<p class=\"mt-7 max-w-xl text-xl leading-relaxed text-slate\">",
+    "allPerformanceScores": [
+      100,
+      100,
+      100
+    ]
+  },
+  {
+    "page": "/concepts/3",
+    "preset": "desktop",
+    "run": 1,
+    "report": "concepts-3-desktop-run1.report.html",
+    "lighthouseVersion": "13.6.0",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "benchmarkIndex": 3045,
+    "throttlingMethod": "simulate",
+    "throttling": {
+      "rttMs": 40,
+      "throughputKbps": 10240,
+      "requestLatencyMs": 0,
+      "downloadThroughputKbps": 0,
+      "uploadThroughputKbps": 0,
+      "cpuSlowdownMultiplier": 1
+    },
+    "formFactor": "desktop",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 66
+    },
+    "metrics": {
+      "fcp": 328.6321,
+      "lcp": 328.6321,
+      "tbt": 0,
+      "cls": 0.00008602829582932027,
+      "si": 328.6321
+    },
+    "lcpElement": "<h1 id=\"hero-title\" class=\"ff-workshop mt-7 text-[clamp(2.9rem,6.6vw,6.25rem)] font-semibold leading-…\">",
+    "allPerformanceScores": [
+      100,
+      100,
+      100
+    ]
+  }
+]
