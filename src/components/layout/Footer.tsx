@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { cacheLife } from "next/cache";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { contact, social } from "@/content/contact";
@@ -9,14 +8,7 @@ import { Container } from "@/components/ui/Container";
 import { ReviewFlag } from "@/components/ui/ReviewFlag";
 import { Wordmark } from "@/components/ui/Wordmark";
 
-async function getCopyrightYear() {
-  "use cache";
-  cacheLife("days");
-  return new Date().getFullYear();
-}
-
-export async function Footer() {
-  const year = await getCopyrightYear();
+export function Footer() {
   const primaryNaics = naicsCodes.find((code) => code.primary);
   const cage = identifiers.find((id) => id.label === "CAGE code");
   const showContact = isVisible(contact.review);
@@ -113,7 +105,7 @@ export async function Footer() {
       <div className="border-t border-navy-800">
         <Container className="flex flex-col gap-3 py-6 text-sm sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {siteConfig.brandName}. All rights reserved.
+            © {process.env.BUILD_YEAR} {siteConfig.brandName}. All rights reserved.
           </p>
           {isVisible(naicsReview) && primaryNaics && cage && isVisible(cage.review) ? (
             <p>

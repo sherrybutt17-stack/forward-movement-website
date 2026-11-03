@@ -86,7 +86,7 @@ if (!chromePath) {
 
 if (!process.env.SKIP_BUILD) {
   console.log("Building production bundle (ALLOW_INDEXING=true)…");
-  const build = spawnSync("npx", ["next", "build"], {
+  const build = spawnSync("npm", ["run", "build"], {
     stdio: "inherit",
     env: { ...process.env, ALLOW_INDEXING: "true" },
   });

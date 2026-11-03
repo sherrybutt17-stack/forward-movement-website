@@ -9,7 +9,10 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test:e2e": "playwright test",
-    "lighthouse": "node scripts/lighthouse.mjs"
+    "lighthouse": "node scripts/lighthouse.mjs",
+    "build:pages": "STATIC_EXPORT=true PAGES_BASE_PATH=/forward-movement-website NEXT_PUBLIC_SITE_URL=https://sherrybutt17-stack.github.io/forward-movement-website next build",
+    "prebuild": "node scripts/seo-files.mjs",
+    "prebuild:pages": "STATIC_EXPORT=true NEXT_PUBLIC_SITE_URL=https://sherrybutt17-stack.github.io/forward-movement-website node scripts/seo-files.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.3.1",

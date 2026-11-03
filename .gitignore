@@ -55,3 +55,8 @@ next-env.d.ts
 /reports/screenshots/
 /reports/lighthouse/*.report.json
 /reports/lighthouse/*.report.html
+
+# generated before each build (scripts/seo-files.mjs)
+/public/robots.txt
+/public/sitemap.xml
+/out/
