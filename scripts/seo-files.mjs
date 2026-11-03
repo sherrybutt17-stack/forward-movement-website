@@ -6,7 +6,7 @@
  *
  * Env: NEXT_PUBLIC_SITE_URL (canonical URL), ALLOW_INDEXING ("true" to allow crawlers).
  */
-import { writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const url = (process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://www.forwardmovementent.com").replace(/\/$/, "");
@@ -26,6 +26,7 @@ ${routes
 </urlset>
 `;
 
+mkdirSync(publicDir, { recursive: true });
 writeFileSync(join(publicDir, "robots.txt"), robots);
 writeFileSync(join(publicDir, "sitemap.xml"), sitemap);
 console.log(`seo-files: robots.txt (${allowIndexing ? "indexing allowed" : "noindex"}) and sitemap.xml for ${url}`);
